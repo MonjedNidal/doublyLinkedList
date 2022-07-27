@@ -49,7 +49,7 @@ public class doublyLinkedList {
             root = node;
             node.setNext(current);
             current.setPrev(node);
-        }else if ( current == null){
+        }else if (current == null){
             previous.setNext(node);
             node.setPrev(previous);
         }else{
@@ -57,9 +57,28 @@ public class doublyLinkedList {
             node.setPrev(previous);
             previous.setNext(node);
             current.setPrev(node);
-
         }
 
+    }
+
+    public void delete (Item item){
+        Item current = root;
+        Item previous = null;
+        while (current != null && current.getName().compareTo(item.getName()) < 0) {
+            previous = current;
+            current = current.getNext();
+        }
+        if (current == null && previous == null){
+            System.out.println("Array is Empty!");
+        }else if (current != null && previous == null){
+            root = root.getNext();
+            root.setPrev(null);
+        }else if ((current != null ? current.getNext() : null) == null){
+            previous.setNext(null);
+        }else{
+            previous.setNext(current.getNext());
+            current.getNext().setPrev(previous);
+        }
     }
 
     public void print() {
