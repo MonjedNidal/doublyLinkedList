@@ -33,7 +33,32 @@ public class doublyLinkedList {
         }
     }
 
-    public void insertInOrder(Item item){
+    public void insertInOrder(Item node){
+        Item current = root;
+        Item previous = null;
+
+        while (current != null && current.getName().compareTo(node.getName()) < 0) {
+            previous = current;
+            current = current.getNext();
+        }
+
+        if (current == null && previous == null){
+            root = node;
+        }
+        else if (current != null && previous == null){
+            root = node;
+            node.setNext(current);
+            current.setPrev(node);
+        }else if ( current == null){
+            previous.setNext(node);
+            node.setPrev(previous);
+        }else{
+            node.setNext(current);
+            node.setPrev(previous);
+            previous.setNext(node);
+            current.setPrev(node);
+
+        }
 
     }
 

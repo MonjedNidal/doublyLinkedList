@@ -6,15 +6,13 @@ public class Main {
         Item a = new Item("monjed");
         Item b = new Item("nidal");
         Item c = new Item("maswadeh");
+//        Item d = new Item("maswadeh");
 
-
-        list.insertAtTail(a);
-        list.insertAtTail(b);
-        list.insertAtTail(c);
+        list.insertInOrder(a);
+        list.insertInOrder(b);
+        list.insertInOrder(c);
+//        list.insertInOrder(d);
 
         list.print();
     }
-
-
-
 }
